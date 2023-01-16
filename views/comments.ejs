@@ -25,22 +25,9 @@
                 <div class="vhead">
                     <% 
                     function getMailImg(mail) {
-                        if(mail.indexOf("@qq.com") >= 0){
-                            var prefix = mail.replace(/@.*/, "");
-                            var pattern = /^\d+$/g;
-                            var result = prefix.match(pattern);
-                            if (result !== null) {
-                                return `//q1.qlogo.cn/g?b=qq&nk=${prefix}&s=100`;
-                            }else{
-                                let size = 100
-                                let hash = Crypto.createHash('md5').update(mail.trim().toLowerCase()).digest("hex")
-                                return `//www.gravatar.com/avatar/${hash}?s=${size}&d=identicon`;
-                            }
-                        }else{
-                            let size = 100
-                            let hash = Crypto.createHash('md5').update(mail.trim().toLowerCase()).digest("hex")
-                            return `//www.gravatar.com/avatar/${hash}?s=${size}&d=identicon`;
-                        }
+                        let size = 100
+                        let hash = Crypto.createHash('md5').update(mail.trim().toLowerCase()).digest("hex")
+                        return `//cravatar.cn/avatar/${hash}?s=${size}&d=identicon`;
                     } %>
                     <% var url = getMailImg(comment_list[i].get('mail')) %>
                     <img src="<%= url %>" alt="logo" class="userIcon">
